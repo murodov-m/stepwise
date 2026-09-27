@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StepWise · Code map</title>
+  <style>
+    :root { color-scheme: light; font-family: Arial, sans-serif; color: #171b18; background: #f5f6f3; }
+    * { box-sizing: border-box; } body { margin: 0; } main { max-width: 980px; margin: auto; padding: 40px 24px 64px; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; margin: 12px 0; } h2 { font-size: 1.35rem; margin-top: 0; }
+    p, li { line-height: 1.65; } a { color: #24623d; text-underline-offset: 3px; } a:focus-visible, summary:focus-visible { outline: 3px solid #24623d; outline-offset: 4px; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; font-weight: bold; color: #24623d; }
+    .lede { max-width: 720px; font-size: 1.15rem; } nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 24px 0; }
+    section { background: #fff; border: 1px solid #d6ddd6; border-radius: 16px; padding: 24px; margin: 20px 0; }
+    code { font-family: Consolas, monospace; font-size: .9em; overflow-wrap: anywhere; } pre { white-space: pre-wrap; border-radius: 8px; padding: 16px; background: #f5f6f3; }
+    summary { cursor: pointer; font-weight: bold; padding: 10px 0; } .note { color: #465247; font-size: .9rem; }
+    .flow { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; list-style: none; padding: 0; }
+    .flow li { border: 1px solid #d6ddd6; padding: 16px; border-radius: 10px; } .flow strong { display: block; color: #24623d; }
+    .flow span { display: block; margin-top: 8px; } ol.route { padding-left: 24px; } .route > li { padding: 8px 0; }
+    table { width: 100%; border-collapse: collapse; text-align: left; } th, td { vertical-align: top; padding: 12px 8px; border-bottom: 1px solid #d6ddd6; line-height: 1.5; }
+    @media (max-width: 640px) { main { padding: 24px 16px; } section { padding: 20px; } .flow { grid-template-columns: 1fr; } table, tbody, tr, th, td { display: block; } thead { display: none; } td { border: 0; } tr { border-bottom: 1px solid #d6ddd6; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">StepWise / a guide to the finished source</p>
+    <h1>From notice to next action.</h1>
+    <p class="lede">StepWise turns an administrative notice into a temporary checklist with inspectable source passages. The fictional sample works without a key. Optional live analysis reads a supplied document locally, then asks a configured service to organize its text.</p>
+    <p class="note">This is a reference route, prepared from actual code on 26 September 2026. It records no completed learner exercise, edit, reflection, or approval.</p>
+    <nav aria-label="Map sections"><a href="#flow">Request flow</a><a href="#route">Three stops</a><a href="#changes">Change pointers</a><a href="#practice">Practice to reuse</a><a href="#run">Run again</a></nav>
+  </header>
+
+  <section id="flow" aria-labelledby="flow-title">
+    <h2 id="flow-title">One real action: Try the sample</h2>
+    <ol class="flow" aria-label="Sample request and result flow">
+      <li><strong>1 → Browser input</strong><code>StepWiseApp.submit</code><span>The button sends sample mode to <code>/api/analyze</code> and shows a cancellable waiting screen.</span></li>
+      <li><strong>2 → Server boundary</strong><code>POST → processSample → validateAnalysisResult</code><span>The fixed fixture passes the result contract and quote checks. No external provider is called.</span></li>
+      <li><strong>3 → Visible plan</strong><code>ActionPlan</code><span>The browser shows actions, requirements, dates and warnings. Answers change priorities; completion advances the next unfinished action.</span></li>
+    </ol>
+    <details><summary>How the optional live branch differs</summary>
+      <p><a href="../lib/server/process-document.ts"><code>lib/server/process-document.ts</code></a>, anchor <code>processLiveDocument</code>, calls <code>extractDocument</code> before the provider. <a href="../lib/server/extract-document.ts"><code>extract-document.ts</code></a> and <a href="../lib/server/extraction-worker.ts"><code>extraction-worker.ts</code></a> own bounded PDF/OCR child processes. Text-bearing PDFs and direct English images are supported; unreadable PDF pages are refused.</p>
+      <p><a href="../lib/server/live-provider.ts"><code>lib/server/live-provider.ts</code></a>, anchor <code>OpenAICompatibleProvider.analyze</code>, sends extracted segments and a contract to a configured <code>/chat/completions</code> service. It does not send the raw file or filename. <code>validateAnalysisResult</code> then checks the returned quotes against independently extracted segments. Provider retention still applies; a quote match does not establish correct interpretation.</p>
+      <p>There is no database, account, analytics, or persistent document store. The browser keeps answers/completion in React state; request resources and extraction processes are temporary. Real-provider quality has not been evaluated with credentials.</p>
+    </details>
+  </section>
+
+  <section id="route" aria-labelledby="route-title">
+    <h2 id="route-title">Three stops to follow in your editor</h2>
+    <p>Run the app, choose <strong>Try the sample</strong>, then use these stable search anchors. Relative links open source files when supported by your browser; the paths also work in an editor.</p>
+    <ol class="route">
+      <li><strong>Start the request.</strong> Open <a href="../components/stepwise-app.tsx"><code>components/stepwise-app.tsx</code></a> and find <code>StepWiseApp</code>, <code>submit</code>, and <code>resetSession</code>. The sample button calls <code>submit({ mode: "sample" })</code>. The controller parses the returned contract, drops successful input and guards against an old response replacing a new session. The page entry is <a href="../app/page.tsx"><code>app/page.tsx</code></a>, anchor <code>HomePage</code>.</li>
+      <li><strong>Find the trust boundary.</strong> Open <a href="../app/api/analyze/route.ts"><code>app/api/analyze/route.ts</code></a>, anchor <code>POST</code>. Sample mode calls <a href="../lib/server/sample-processor.ts"><code>processSample</code></a>, which validates <a href="../lib/domain/sample-fixture.ts"><code>sampleResult</code></a>. In <a href="../lib/server/evidence.ts"><code>lib/server/evidence.ts</code></a>, find <code>validateAnalysisResult</code> and <code>assertEvidence</code>: authoritative sources must be supplied, source IDs must be unique, and each nonblank quote must exist in its referenced segment.</li>
+      <li><strong>Connect state to the visible next action.</strong> Open <a href="../components/action-plan.tsx"><code>components/action-plan.tsx</code></a>, anchor <code>ActionPlan</code>. Select <strong>Gathering documents</strong>: <a href="../lib/domain/personalize.ts"><code>prioritizeActions</code></a> maps the selected option to its action. Choose <strong>Mark complete</strong>: <code>toggleComplete</code> updates the local set and <code>remaining</code>/<code>nextAction</code> derive the count and next task. <code>showEvidence</code> opens <a href="../components/evidence-drawer.tsx"><code>EvidenceDrawer</code></a> with the referenced source and quote.</li>
+    </ol>
+  </section>
+
+  <section id="changes" aria-labelledby="changes-title">
+    <h2 id="changes-title">To change this, start here</h2>
+    <table><thead><tr><th>Visible behavior</th><th>Source and stable anchor</th></tr></thead><tbody>
+      <tr><td>Input wording or reset behavior</td><td><code>components/stepwise-app.tsx · StepWiseApp / resetSession</code></td></tr>
+      <tr><td>Question options and sample content</td><td><code>lib/domain/sample-fixture.ts · sampleResult</code>; keep passages consistent with <a href="../public/sample/benefits-renewal-notice.txt">the fictional notice</a>.</td></tr>
+      <tr><td>Answer-dependent ordering and guidance</td><td><code>lib/domain/personalize.ts · prioritizeActions</code>; rendering uses <code>components/clarification-questions.tsx · ClarificationQuestions</code>.</td></tr>
+      <tr><td>Completion/count or source display</td><td><code>components/action-plan.tsx · toggleComplete / showEvidence</code>; <code>components/evidence-drawer.tsx · EvidenceDrawer</code>.</td></tr>
+      <tr><td>Date labels or layout</td><td><code>lib/domain/deadlines.ts · getActionDueLabel</code>; <code>app/globals.css</code>.</td></tr>
+    </tbody></table>
+    <p class="note">No optional learner edit was attempted or retained for this map.</p>
+  </section>
+
+  <section id="practice" aria-labelledby="practice-title">
+    <h2 id="practice-title">A practice to reuse: specify what counts as evidence</h2>
+    <p>The review exposed a result that could pair an unrelated upload with fabricated sample passages. The correction makes the server's extracted segments the authority, rather than allowing a model to provide its own proof. <a href="../devpost/prd.md"><code>prd.md</code></a> → <strong>Evidence and uncertainty</strong> states the intended behavior; <a href="../tests/server/trust-regression.test.ts"><code>tests/server/trust-regression.test.ts</code></a> → <code>rejects an unrelated upload paired with fabricated sample sources</code> exercises the failure, and <code>validateAnalysisResult</code> enforces the boundary.</p>
+    <p>On another project, choose an observable promise, name who owns the underlying data, and test a plausible mismatch before trusting a plausible-looking result. Here the check proves quote provenance. It does not prove eligibility, interpretation, completeness, or professional correctness.</p>
+  </section>
+
+  <section id="run" aria-labelledby="run-title">
+    <h2 id="run-title">Run it again</h2>
+    <p>From the project root, use Node.js 24 and npm:</p>
+    <pre><code>npm ci
+npm run dev</code></pre>
+    <p>Open <a href="http://localhost:3000">localhost:3000</a> and choose <strong>Try the sample</strong>. For production, use <code>npm run build</code> followed by <code>npm start</code>. See <a href="../README.md">README</a> for quality checks, extraction limits and optional live setup.</p>
+    <p class="note">Snapshot: completed working source, 26 September 2026, based on <code>56037e27a189616866e0c69c861ac0c909a8baac</code> plus the uncommitted corrective implementation and shipping files. That base commit alone is not this finished app. This map can drift as source changes; recheck anchors after an edit. This standalone HTML needs no build step, scripts, external assets, or network connection to read.</p>
+  </section>
+</main>
+</body>
+</html>
