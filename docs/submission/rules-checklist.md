@@ -7,9 +7,9 @@ Deadline: 26 October 2026, 17:00 EDT — 27 October, 02:00 in Tashkent. Judging 
 | Requirement | Evidence / remaining action |
 | --- | --- |
 | Functioning proof of concept | Sample core journey; final technical evidence in `verification.md` |
-| Public source and detectable open-source license | User-authorized `murodov-m/stepwise`; publication pending final checks; root MIT license |
+| Public source and detectable open-source license | [murodov-m/stepwise](https://github.com/murodov-m/stepwise); anonymous clone verified, clean noreply history, detected MIT license |
 | Required Skill Pack planning outputs | `devpost/scope.md`, `prd.md`, `spec.md`; generated from the installed official pack |
-| Public demonstration under three minutes | Recording prepared after final app checks; user uploads publicly to YouTube and supplies URL |
+| Public demonstration under three minutes | Actual 118.083-second [recording](stepwise-demo.webm) prepared and playback verified; user uploads publicly to YouTube and supplies URL |
 | English materials | Interface, technical docs, and recording preparation in English |
 | Install and free judging access | No-key local sample instructions in README; no required paid provider |
 | Accurate entrant/project declarations | User checks eligibility, timing, ownership, and any prior-work disclosures |

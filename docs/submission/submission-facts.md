@@ -21,6 +21,6 @@ This is a factual reference, not public submission wording. Write the project de
 
 Before submitting, use the current form's actual fields. Describe sample output as deterministic; do not claim the recording proves live analysis, universal document coverage, or perfect accuracy. Original local planning history is preserved privately; publication uses separate clean history with a GitHub noreply address. Check your event-period and prior-work declarations yourself.
 
-Repository and video links will be recorded in `rules-checklist.md` when verified. Video upload and final Devpost submission remain pending until you complete them.
+Public repository: [murodov-m/stepwise](https://github.com/murodov-m/stepwise), verified by an anonymous clone and successful hosted checks. Video upload and final Devpost submission remain pending until you complete them; record the public video URL in `rules-checklist.md` after verifying access.
 
 Prepared assets: [actual demo recording](stepwise-demo.webm) (118.083 seconds), [sample screenshot](stepwise-sample.jpg), [upload instructions](youtube-upload.md), and [offline app map](../../devpost/app-map.html). Review the recording before uploading it publicly. Any narration and the Devpost answers remain yours to write.

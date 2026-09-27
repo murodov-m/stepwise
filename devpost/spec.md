@@ -22,6 +22,8 @@ Pinned resolved versions live in `package-lock.json`. These are implementation c
 ## Where It Runs and How Someone Tries It
 Use Node.js 24 LTS and npm. Run `npm ci`, `npm run dev`, then open `http://localhost:3000`. Choose **Try the sample**. No key or paid service is needed. An optional production run uses `npm run build` then `npm start`. Public source and a public video are the submission access path; deployment is optional.
 
+Public source: [murodov-m/stepwise](https://github.com/murodov-m/stepwise), anonymous clone and hosted verification passed 27 September 2026. The prepared 118.083-second recording is `docs/submission/stepwise-demo.webm`; the learner must upload it publicly and record its verified watch URL in `docs/submission/rules-checklist.md`. Draft planning status remains until the learner reviews the documents.
+
 ## Look and Feel
 Carry forward PRD's Action First direction using ordinary CSS: neutral `#f5f6f3`, near-black `#171b18`, green `#24623d`, Arial/system sans-serif, rounded panels, and visible focus. Stack tasks/facts on mobile. Respect reduced-motion preferences. PRD ref: `prd.md > Look and Feel`.
 

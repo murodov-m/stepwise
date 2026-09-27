@@ -30,13 +30,14 @@ Build mode: fast — continuing the existing project under the learner's instruc
   Learner check: Select Gathering documents, check what changes, complete a task, open/close its source with the keyboard, then start a new document.
   Commit: `Complete the temporary checklist journey` (parent coordinates publication).
 
-- [ ] **3. A judge can install and inspect the complete project**
+- [x] **3. A judge can install and inspect the complete project**
   Becomes usable: Public licensed source with accurate setup/privacy/limitations documentation and a real demo recording prepared for the learner's YouTube upload.
   Why now: Submission assets must reflect the finished app and verified behavior.
   PRD ref: `prd.md > What We're Building`
   Spec ref: `spec.md > Where It Runs and How Someone Tries It`, `spec.md > File Structure`
   Build: README, license, notices, factual handoff, app map, demo footage and upload mechanics; audit the publication set and create the requested GitHub repository.
   Verify (mechanical): Clean install and full checks, final independent review, no ignored personal/secrets files in publication, video duration/actual-functioning footage and source links.
+  Mechanical evidence: All technical tasks and final review approved; corrected final suite 72 unit/12 browser checks plus typecheck/lint/build passed. Public [repository](https://github.com/murodov-m/stepwise) anonymously cloned and matched 75 audited files; [hosted fresh-install checks](https://github.com/murodov-m/stepwise/actions/runs/36313217468) passed. Actual 118.083-second demo is prepared and playable. YouTube publication, learner document approval/exploration and Devpost submission remain pending.
   Learner check: Follow README setup, review the working app, upload the video publicly, and write the required Devpost fields in your own words.
   Commit: `Prepare StepWise for public judging`.
 
