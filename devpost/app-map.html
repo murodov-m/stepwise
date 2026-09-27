@@ -27,7 +27,7 @@
     <p class="eyebrow">StepWise / a guide to the finished source</p>
     <h1>From notice to next action.</h1>
     <p class="lede">StepWise turns an administrative notice into a temporary checklist with inspectable source passages. The fictional sample works without a key. Optional live analysis reads a supplied document locally, then asks a configured service to organize its text.</p>
-    <p class="note">This is a reference route, prepared from actual code on 26 September 2026. It records no completed learner exercise, edit, reflection, or approval.</p>
+    <p class="note">A reference to the sample request, source validation, and checklist state in the current implementation.</p>
     <nav aria-label="Map sections"><a href="#flow">Request flow</a><a href="#route">Three stops</a><a href="#changes">Change pointers</a><a href="#practice">Practice to reuse</a><a href="#run">Run again</a></nav>
   </header>
 
@@ -64,7 +64,6 @@
       <tr><td>Completion/count or source display</td><td><code>components/action-plan.tsx · toggleComplete / showEvidence</code>; <code>components/evidence-drawer.tsx · EvidenceDrawer</code>.</td></tr>
       <tr><td>Date labels or layout</td><td><code>lib/domain/deadlines.ts · getActionDueLabel</code>; <code>app/globals.css</code>.</td></tr>
     </tbody></table>
-    <p class="note">No optional learner edit was attempted or retained for this map.</p>
   </section>
 
   <section id="practice" aria-labelledby="practice-title">
@@ -79,7 +78,7 @@
     <pre><code>npm ci
 npm run dev</code></pre>
     <p>Open <a href="http://localhost:3000">localhost:3000</a> and choose <strong>Try the sample</strong>. For production, use <code>npm run build</code> followed by <code>npm start</code>. See <a href="../README.md">README</a> for quality checks, extraction limits and optional live setup.</p>
-    <p class="note">Snapshot: completed working source, 26 September 2026, based on <code>56037e27a189616866e0c69c861ac0c909a8baac</code> plus the uncommitted corrective implementation and shipping files. That base commit alone is not this finished app. This map can drift as source changes; recheck anchors after an edit. This standalone HTML needs no build step, scripts, external assets, or network connection to read.</p>
+    <p class="note">Recheck source anchors after changes. This standalone HTML needs no build step, scripts, external assets, or network connection to read.</p>
   </section>
 </main>
 </body>

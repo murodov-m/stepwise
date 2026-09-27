@@ -47,13 +47,12 @@ Calendar dates must be valid. Deterministic relative/overdue labels update again
 - **Advice:** informational organization only; original issuer and qualified professionals remain the authority.
 
 ## Product Decisions
-- Learner: keep the no-key sample as the main demonstration; prepare optional live mode.
-- Learner: create a public repository under `murodov-m` and prepare video/upload instructions for their YouTube account.
-- Existing design: administrative paperwork, Action First layout, no account or persistent storage.
-- Corrective implementation detail: validate references against independently extracted server-owned text, rather than a model's returned source body.
+- Keep the no-key sample as the main demonstration; live mode is optional.
+- Focus on administrative paperwork, an Action First layout, and temporary sessions without accounts or persistent storage.
+- Validate references against independently extracted server-owned text.
 
 ## What We're Building
-The complete journey above, regression coverage of the reviewed defects, installable public source, an open-source license, official Skill Pack planning artifacts, a source map, and functioning-demo recording preparation.
+The complete journey above, regression coverage, installable public source, an open-source license, official Skill Pack planning artifacts, and a code map.
 
 ## Deferred From the POC
 Saved history, accounts, automated official responses, multilingual OCR, and scanned multipage PDF processing. Each expands storage, authority, or extraction responsibilities beyond this proof of concept.
@@ -65,7 +64,7 @@ User testing can reveal which document categories and languages deserve dedicate
 Determine eligibility, guarantee accuracy, deliver professional advice, or silently invent absent document details. Source: `scope.md > Explicitly Cut`.
 
 ## Open Questions
-Optional live provider credentials are not supplied; real-provider quality cannot be certified. The user will provide their own public video URL and public submission wording. These do not block the no-key project build.
+Real-provider quality needs separate evaluation with a configured service. The no-key sample and controlled provider tests establish the current proof-of-concept boundary.
 
 ## Document Provenance
-Generated with the official Learn Skill Pack `3-prd` template from `scope.md`, the existing design, and reviewed defects. No learner experience or reflection is invented.
+Generated with the official Learn Skill Pack `3-prd` template from `scope.md` and the existing project design.

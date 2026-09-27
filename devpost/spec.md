@@ -17,12 +17,11 @@ Input → server request → independently extracted source passages → optiona
 - Tesseract.js with bundled English language data: local OCR without runtime language downloads. [Official repository](https://github.com/naptha/tesseract.js).
 - Vitest and Playwright: server/domain regressions and full-browser journeys. [Vitest](https://vitest.dev/), [Playwright](https://playwright.dev/).
 
-Pinned resolved versions live in `package-lock.json`. These are implementation choices inherited from the project or selected to repair its supported-input boundary, not claims of independent technology selection by the learner.
+Pinned resolved versions live in `package-lock.json`.
 
 ## Where It Runs and How Someone Tries It
-Use Node.js 24 LTS and npm. Run `npm ci`, `npm run dev`, then open `http://localhost:3000`. Choose **Try the sample**. No key or paid service is needed. An optional production run uses `npm run build` then `npm start`. Public source and a public video are the submission access path; deployment is optional.
+Use Node.js 24 LTS and npm. Run `npm ci`, `npm run dev`, then open `http://localhost:3000`. Choose **Try the sample**. No key or paid service is needed. An optional production run uses `npm run build` then `npm start`. See [README](../README.md) for setup and verification commands.
 
-Public source: [murodov-m/stepwise](https://github.com/murodov-m/stepwise), anonymous clone and hosted verification passed 27 September 2026. The prepared 118.083-second recording is `docs/submission/stepwise-demo.webm`; the learner must upload it publicly and record its verified watch URL in `docs/submission/rules-checklist.md`. Draft planning status remains until the learner reviews the documents.
 
 ## Look and Feel
 Carry forward PRD's Action First direction using ordinary CSS: neutral `#f5f6f3`, near-black `#171b18`, green `#24623d`, Arial/system sans-serif, rounded panels, and visible focus. Stack tasks/facts on mobile. Respect reduced-motion preferences. PRD ref: `prd.md > Look and Feel`.
@@ -35,7 +34,7 @@ The client accepts a file or pasted text, calls the document endpoint, handles c
 The document route checks body size, file type/signature, configured mode, and cancellation. Extraction has a 30-second budget; provider analysis has a separate 30-second budget. Maximum extracted text: 100,000 characters; maximum PDF pages: 40; maximum image size: 16 million pixels. Both PDF and OCR run in owned child processes so initialization and CPU-heavy work can be terminated, with process exit awaited. PDF/OCR resources close on success, failure, and timeout. PRD ref: `prd.md > Evidence and uncertainty`.
 
 ### Result validation and plan logic
-The schema checks identifiers, questions, real calendar dates, and evidence states. The evidence validator requires an explicit authoritative source list. It rejects missing/duplicate/forged references and normalized empty quotes. The plan functions order unfinished actions according to actual selected answers and derive relative deadline labels. PRD ref: `prd.md > A plan that changes with the user's progress`, `prd.md > Dates and drafts`.
+The schema checks identifiers, questions, real calendar dates, and evidence states. The evidence validator requires an explicit authoritative source list. It rejects missing/duplicate/forged references and normalized empty quotes. Each offered answer needs an action mapping or supported built-in guidance with a valid target. The plan functions order unfinished actions according to actual selected answers and derive relative deadline labels. PRD ref: `prd.md > A plan that changes with the user's progress`, `prd.md > Dates and drafts`.
 
 ### Results and evidence modal
 Show remaining actions, source/suggested deadlines, required documents, warnings, selected answers, and draft status. Use a native modal dialog with initial focus, inactive background, Escape dismissal, and return focus. PRD ref: `prd.md > Screens and Layout`.
@@ -51,8 +50,8 @@ lib/domain/          # schema, fixture, dates, personalization
 lib/server/          # extraction, provider, validation, processing
 public/sample/       # fictional notice
 tests/               # unit, integration, browser checks
-devpost/             # planning, build checklist, factual handoff
-docs/superpowers/    # original design and corrective plan
+devpost/             # required planning, build checklist, code map
+docs/                # verification, third-party notices, screenshot
 ```
 
 ## External Services and Dependencies
@@ -70,7 +69,7 @@ Sample mode makes no provider request. Optional live mode sends extracted segmen
 - Reject a PDF if any page has no readable text, even a legitimate blank page, to avoid silently omitting a scanned requirement.
 
 ## Decisions and Open Issues
-Learner choices are recorded in `prd.md > Product Decisions`. The source-ownership repair follows the review's demonstrated forged-evidence defect. No specific learner uncertainty about a technology was articulated; do not invent one. User hands-on feedback, personal submission wording, and public video upload remain pending. Real-provider verification needs the user's optional credentials.
+Product decisions are recorded in `prd.md > Product Decisions`. Real-provider quality and hosted operation need separate evaluation; neither is established by the deterministic sample.
 
 ## Document Provenance
-Generated using the official Learn Skill Pack `4-spec` template. The implementation plan is `docs/superpowers/plans/2026-09-26-stepwise-completion.md`; final verification will update this spec if actual behavior differs.
+Generated using the official Learn Skill Pack `4-spec` template. This document describes the current implementation; [verification](../docs/verification.md) records the checked behavior and limitations.

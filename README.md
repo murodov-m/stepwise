@@ -2,6 +2,8 @@
 
 An administrative-notice checklist with inspectable source passages. The included fictional renewal notice runs without an account, API key, or paid service.
 
+![StepWise sample action plan](docs/assets/stepwise-sample.jpg)
+
 ## Run the no-key demo
 
 Install [Node.js 24 LTS](https://nodejs.org/) and Git, then:
@@ -21,8 +23,6 @@ To run a production build locally:
 npm run build
 npm start
 ```
-
-No hosted deployment is required to judge the project. Keep the public repository and public demo video available through the judging period. Video upload is tracked in [the submission checklist](docs/submission/rules-checklist.md).
 
 ## Optional live mode
 
@@ -61,22 +61,17 @@ npm run e2e
 
 `typecheck` generates Next.js route definitions before checking TypeScript, so it works without a prior dev session or build and includes the framework's route contracts. `next-env.d.ts` and `.next/` are generated locally and excluded from public source.
 
-Browser tests use localhost consistently, start their own server, and exercise the real no-key route. Provider-failure and alternative-result tests use controlled responses. [Verification evidence](docs/submission/verification.md) records the final results and limits; the commands here are also suitable for a fresh checkout.
+Browser tests use localhost consistently, start their own server, and exercise the real no-key route. Provider-failure and alternative-result tests use controlled responses. [Verification evidence](docs/verification.md) records the results and limits.
 
 ## Project map and planning
 
 - [Interactive code map](devpost/app-map.html) — open locally in a browser; no external assets.
 - Official Devpost Learn Skill Pack outputs: [scope](devpost/scope.md), [PRD](devpost/prd.md), [spec](devpost/spec.md), [build checklist](devpost/checklist.md).
-- [Original design](docs/superpowers/specs/2026-09-24-stepwise-design.md) and [corrective completion plan](docs/superpowers/plans/2026-09-26-stepwise-completion.md).
 - `app/` and `components/`: input, temporary session, checklist, and source modal.
 - `lib/domain/`: result contract, sample, dates, and answer-dependent priorities.
 - `lib/server/`: independent extraction, external provider adapter, validation, and route processing.
 - `tests/`: domain/server regressions and browser journeys.
 
-The project was built with AI coding assistance, including Superpowers and the official [Devpost Learn Skill Pack](https://github.com/challengepost/learn-ai-basics). Planning files distinguish user decisions from implementation choices. The ignored learner profile is private and absent from public source. The fictional sample and application styling are project-created; third-party code/data disclosures are in [notices](docs/submission/third-party-notices.md).
-
-## Submission handoff
-
-[Factual inventory](docs/submission/submission-facts.md), [recording runbook](docs/submission/demo-runbook.md), and [YouTube upload instructions](docs/submission/youtube-upload.md) support the user's own submission. These are technical notes, not authored personal reflections or public pitch copy.
+The project was built with AI coding assistance, including Superpowers and the official [Devpost Learn Skill Pack](https://github.com/challengepost/learn-ai-basics). The fictional sample and application styling are project-created; dependency and asset attribution is in [third-party notices](docs/third-party-notices.md).
 
 MIT licensed; see [LICENSE](LICENSE).

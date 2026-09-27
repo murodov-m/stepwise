@@ -16,10 +16,10 @@ A person trying to respond to an unfamiliar benefits, licensing, or service noti
 Open the sample or supply a document, read the suggested next action, inspect its source, answer up to three questions, and tick off the plan. Start a new document when finished. Nothing is saved between sessions.
 
 ## Inspiration & Identity
-Carry forward the existing Action First direction: neutral surfaces, near-black text, green accent, clear numbered tasks, and calm language. The central surface is a plan rather than a conversation. Source: `docs/superpowers/specs/2026-09-24-stepwise-design.md > Interface and Visual Direction`.
+Action First: neutral surfaces, near-black text, green accent, clear numbered tasks, and calm language. The central surface is a plan rather than a conversation. See `prd.md > Look and Feel`.
 
 ## Why This Matters to the Learner
-The learner asked to understand the existing project's stage and finish it completely for the hackathon. No additional personal motivation is claimed.
+The project continues an existing prototype for the Build With AI: Basics hackathon. Personal learning reflections are maintained separately.
 
 ## What "Working" Looks Like
 A judge can run the app without credentials, try the fictional renewal sample, inspect the deadline's actual passage, choose a different priority, complete the current task, and see the next unfinished task take its place. Unclear contact information stays visibly uncertain.
@@ -37,4 +37,4 @@ Wider language support, more document categories, and tested hosted operation ca
 - Image-only PDF OCR: the current boundary accepts images directly and text-bearing PDFs; scanning a multipage PDF adds another processing pipeline.
 
 ## Document Provenance
-Generated using the installed official [Devpost Learn Skill Pack](https://github.com/challengepost/learn-ai-basics), `2-scope` template, from the existing design, review, and the learner's instructions. This is a planning artifact, not the learner's public submission prose.
+Generated using the official [Devpost Learn Skill Pack](https://github.com/challengepost/learn-ai-basics), `2-scope` template, from the existing project design and agreed scope.
