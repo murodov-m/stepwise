@@ -33,6 +33,36 @@ test("meeting-deadline priority chooses the submitting action", async ({ page })
   await expect(page.locator(".action-card").first().getByRole("heading", { level: 2 })).toHaveText("Review the renewal before submitting");
 });
 
+for (const viewport of [{ width: 1440, height: 900 }, { width: 375, height: 812 }]) {
+  test(`priority choices stay in place while tasks reorder at ${viewport.width}px`, async ({ page }) => {
+    await page.setViewportSize(viewport);
+    await openSample(page);
+    const choices = [
+      { option: "Understanding the notice", firstTask: "Check your details" },
+      { option: "Gathering documents", firstTask: "Gather the two required documents" },
+      { option: "Meeting the deadline", firstTask: "Review the renewal before submitting" },
+      { option: "Understanding the notice", firstTask: "Check your details" },
+    ];
+    for (const { option, firstTask } of choices) {
+      const button = page.getByRole("button", { name: option, exact: true });
+      await button.evaluate(node => node.scrollIntoView({ block: "center", behavior: "instant" }));
+      await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => resolve())));
+      const before = await button.boundingBox();
+      if (!before) throw new Error("Priority choice is not visible");
+      // Click where the person sees the button; locator.click() could conceal
+      // a jump by scrolling the control back into view on the next iteration.
+      await page.mouse.click(before.x + before.width / 2, before.y + before.height / 2);
+      await expect(button).toHaveAttribute("aria-pressed", "true");
+      await expect(button).toBeFocused();
+      await expect(page.locator(".action-card").first().getByRole("heading", { level: 2 })).toHaveText(firstTask);
+      await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+      const after = await button.boundingBox();
+      if (!after) throw new Error("Priority choice disappeared after selection");
+      expect(Math.abs(after.y - before.y), `${option} moved in the viewport`).toBeLessThanOrEqual(2);
+    }
+  });
+}
+
 test("real sample prioritizes each option, advances completion, and clears the session", async ({ page }) => {
   await openSample(page);
   await page.getByRole("button", { name: "Gathering documents", exact: true }).click();

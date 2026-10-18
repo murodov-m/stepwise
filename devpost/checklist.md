@@ -22,13 +22,14 @@ Build mode: fast. Technical milestones are complete; learner checkpoints remain 
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored by the learner.
-- [ ] Final hands-on exploration and feedback completed by the learner.
+- [x] Learner explored the running sample and reported a priority-selection scroll jump on 18 October 2026.
+- [ ] Final hands-on exploration and feedback completed, including retrying the scroll correction.
 
 ## Final Review
 
 - [x] Independent technical review approved; 72 unit tests, 12 browser tests, lint, typecheck and production build passed on 27 September 2026.
 - [ ] Learner confirms readiness to ship.
+- [ ] Priority choices stay in view after tasks reorder; learner retry pending.
 
 ## Code Tour and App Map
 
@@ -43,5 +44,6 @@ Reference route: `StepWiseApp.submit` → `POST/processSample/validateAnalysisRe
 - Source quotes are checked against independently extracted passages.
 - PDF and OCR extraction use owned child processes for bounded cleanup. PDFs with any unreadable or blank page are refused to avoid silently omitting a requirement.
 - Type checking generates Next route definitions first. The lockfile preserves exact dependency versions for fresh installation.
+- The first recorded learner feedback arrived after implementation, during the final sample walkthrough. Final review includes correcting the priority-selection scroll jump; an earlier hands-on checkpoint is not claimed.
 
 Generated with the official Devpost Learn Skill Pack `5-build` checklist structure.

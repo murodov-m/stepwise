@@ -43,7 +43,8 @@ h1 { max-width: 680px; margin: 12px 0; font-size: clamp(42px, 8vw, 80px); line-h
 .start-panel { margin-bottom: 32px; background: var(--ink); color: white; }
 .start-panel .eyebrow { color: #b5e0bf; }
 .plan-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); gap: 24px; }
-.action-list { display: grid; gap: 12px; }
+/* Reordered cards must not pull the viewport away from the question controls. */
+.action-list { display: grid; gap: 12px; overflow-anchor: none; }
 .action-card { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); }
 .action-card h2, .facts-panel h2, .questions-panel h2, .draft-panel h2 { margin: 0 0 8px; font-size: 20px; }
 .action-number { color: var(--accent); font-weight: 800; }

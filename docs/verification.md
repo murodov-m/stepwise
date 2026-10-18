@@ -1,6 +1,6 @@
 # Verification
 
-Application verification completed on 27 September 2026. A fresh Windows source copy used Node 24.16.0 and npm 11.13.0; hosted checks used Ubuntu and Node 24.
+Application verification was refreshed on 18 October 2026 after correcting priority-selection scrolling. The original fresh-install Windows source copy uses Node 24.16.0 and npm 11.13.0; hosted checks use Ubuntu and Node 24.
 
 | Check | Result |
 | --- | --- |
@@ -9,11 +9,11 @@ Application verification completed on 27 September 2026. A fresh Windows source 
 | Typecheck | Passed, including generated Next route validation |
 | Unit/server/domain tests | 72 tests in 14 files passed |
 | Production build | Passed with Next 16.3.6 |
-| Chromium browser tests | 12 passed; owned test server shut down |
+| Chromium browser tests | 14 passed, including stable priority controls at desktop and mobile widths; owned test server shut down |
 | Manual production inspection | Sample, priority/readiness answers, sources, completion, reset, keyboard focus and 375px layout inspected |
 | Independent technical review | Approved after corrective regressions and focused re-review |
 
-[Hosted verification](https://github.com/murodov-m/stepwise/actions/runs/36313807286) passed installation, lint, typecheck, unit tests, build and browser tests. The [workflow](../.github/workflows/ci.yml) runs these checks on pushes and pull requests. Repeatable commands are in [README](../README.md#verify).
+The [workflow](../.github/workflows/ci.yml) runs fresh installation, lint, typecheck, unit tests, build and browser tests on pushes and pull requests. [Hosted run results](https://github.com/murodov-m/stepwise/actions/workflows/ci.yml) are available on GitHub. Repeatable commands are in [README](../README.md#verify).
 
 Actual text, text-bearing PDF and English-image extraction were checked using synthetic fixtures. Controlled provider responses test the request contract, source validation, cancellation, timeouts and resource cleanup. Generic questions require an effect for every offered answer; browser tests isolate live-provider settings.
 
