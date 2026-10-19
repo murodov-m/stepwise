@@ -1,10 +1,10 @@
 ---
 doc: checklist
-status: draft
+status: approved
 ---
 # Build Checklist
 
-Build mode: fast. Technical milestones are complete; learner checkpoints remain separate.
+Build mode: fast. Implementation and final review are complete. Final learner sign-off was recorded on 19 October 2026.
 
 ## Slices
 
@@ -24,21 +24,23 @@ Build mode: fast. Technical milestones are complete; learner checkpoints remain 
 
 - [x] Learner explored the running sample and reported a priority-selection scroll jump on 18 October 2026.
 - [x] Learner tested live analysis with a fictional notice and reported it works on 19 October 2026.
-- [ ] Final hands-on exploration and feedback completed, including retrying the scroll correction.
+- [x] Final hands-on exploration and feedback completed; learner accepted the current app after reviewing the sample, refinements and live-document flow on 19 October 2026.
 
 ## Final Review
 
 - [x] Independent technical review approved; latest checks passed on 19 October 2026: 82 unit tests, 15 browser tests, lint, typecheck and production build. Limited Gemini live-text smoke checks also passed.
-- [ ] Learner confirms readiness to ship.
-- [ ] Priority choices stay in view after tasks reorder; learner retry pending.
+- [x] Learner explicitly confirmed the current proof of concept is ready on 19 October 2026.
+- [x] Priority-choice regression checks pass on desktop and mobile, and learner accepted the current build when asked about the priority controls and revised layout.
 
 ## Code Tour and App Map
 
 - [x] [Code map](app-map.html) generated, source links checked, and layout inspected.
-- [ ] Learning activity completed by the learner.
-- [ ] Optional edit and transfer reflection addressed.
+- [x] Build-time design and testing activity recorded, with a brief evidence-based recap and the reference app map shared. No independent code-navigation exercise or mastery is claimed.
+- [x] Retained edits were learner-requested question placement/copy and a rolling sample deadline. No additional practice edit is needed; transfer reflection is optional and not a completion gate.
 
-Reference route: `StepWiseApp.submit` → `POST/processSample/validateAnalysisResult` → `ActionPlan/prioritizeActions`. The map is available as a reference; learner activity and reflection have not been recorded.
+Activity: the learner identified confusing behavior, approved specific changes, tried live document analysis, and reported it works. The wrap-up connected this evidence to the reusable practice of describing observable behavior and trying it after changes. The map is a reference, not a claim of a completed guided code tour. Personal reflection, if supplied, belongs only in the ignored learner profile.
+
+Reference route: `StepWiseApp.submit` → `POST/processSample/validateAnalysisResult` → `ActionPlan/prioritizeActions`. Live input follows `POST/processLiveDocument` before the same result display.
 
 ## Revisions
 
@@ -49,5 +51,6 @@ Reference route: `StepWiseApp.submit` → `POST/processSample/validateAnalysisRe
 - On 19 October 2026, learner feedback clarified the results flow: optional "Before you start" questions appear between the notice summary and the suggested first step. The default plan remains available without answers.
 - The fictional sample deadline is set 14 calendar days after the local start date and remains fixed within the session. Generated source quotes and plan dates agree; live document dates are unchanged.
 - Optional live analysis was connected privately to Gemini and checked with fictional library notices. The live browser flow preserved the stated deadline, opened a matching source quote, cleared input on reset, and retained sample functionality. This is a limited smoke check, not a broad model-quality evaluation.
+- On 19 October 2026, final readiness was explicitly confirmed after the remaining priority/layout concerns were named. The previously draft checklist was approved at this final checkpoint; this does not claim an earlier build-order sign-off.
 
 Generated with the official Devpost Learn Skill Pack `5-build` checklist structure.
