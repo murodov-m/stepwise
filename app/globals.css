@@ -60,7 +60,8 @@ h1 { max-width: 680px; margin: 12px 0; font-size: clamp(42px, 8vw, 80px); line-h
 .topbar-actions, .action-buttons { display: flex; align-items: center; gap: 14px; }
 .action-card.completed { opacity: .68; }
 .action-card.completed h2 { text-decoration: line-through; }
-.questions-panel, .draft-panel { margin-top: 32px; }
+.questions-panel { margin-bottom: 32px; }
+.draft-panel { margin-top: 32px; }
 .questions-panel fieldset { margin: 20px 0 0; padding: 0; border: 0; }
 .questions-panel legend { margin-bottom: 10px; font-weight: 700; }
 .choice-row { display: flex; flex-wrap: wrap; gap: 8px; }

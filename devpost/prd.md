@@ -10,16 +10,16 @@ Help a person responding to an administrative notice organize a short plan and c
 1. Arrive at the single-page app; see sample and document-input choices plus the privacy boundary.
 2. Try the fictional sample without a key, or deliberately choose optional live input.
 3. Wait for processing; cancel or recover from an actionable error if necessary.
-4. Read the count of remaining tasks and the first unfinished action, including its deadline and required documents.
-5. Open evidence for a task or fact, read all cited passages, then return to the plan.
-6. Answer up to three questions. Selected answers remain visible and influence the next action or readiness guidance.
+4. Read the notice summary and remaining task count. Optionally answer up to three questions before the plan; selected answers remain visible and influence the next action or readiness guidance.
+5. Read the suggested first unfinished action and checklist, including deadlines and required documents. A default plan is available without answering questions.
+6. Open evidence for a task or fact, read all cited passages, then return to the plan.
 7. Complete or reopen tasks; copy a labeled draft if useful.
 8. Clear the session to return to a clean input screen.
 
 Source: `scope.md > The Core Loop` and `scope.md > What "Working" Looks Like`.
 
 ## Screens and Layout
-The input view, processing view, and results view share one route. Results put the next action above numbered tasks and key facts, with questions and drafts below. Evidence opens in a modal side panel. At small widths the plan and facts form one column. No separate account or dashboard screen.
+The input view, processing view, and results view share one route. Results show the notice summary, optional "Before you start" questions, then the suggested next action, numbered tasks and key facts. Drafts follow the plan. Evidence opens in a modal side panel. At small widths the plan and facts form one column. No separate account or dashboard screen.
 
 ## Look and Feel
 Compact, high contrast, neutral background, green accent, readable sans-serif type, visible keyboard focus, restrained motion. Interface copy names what the user can do and explains uncertainty without claiming professional authority. Source: `scope.md > Inspiration & Identity`.

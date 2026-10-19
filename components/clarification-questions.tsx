@@ -5,7 +5,8 @@ export function ClarificationQuestions({ questions, answers, onAnswer }: { quest
   if (!questions.length) return null;
   return (
     <section className="questions-panel" aria-labelledby="questions-title">
-      <p className="eyebrow">Make it yours</p><h2 id="questions-title">Adjust your plan</h2>
+      <h2 id="questions-title">Before you start</h2>
+      <p className="microcopy">Optional. Your answers help us suggest where to start and update the task order and guidance below. You can use the plan without answering.</p>
       {questions.map(question => <fieldset key={question.id}>
         <legend>{question.prompt}</legend>
         <div className="choice-row">{question.options.map(option => <button className="choice-button" key={option} aria-pressed={answers[question.id] === option} onClick={() => onAnswer(question.id, option)}>{option}</button>)}</div>

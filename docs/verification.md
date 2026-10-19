@@ -1,6 +1,6 @@
 # Verification
 
-Application verification was refreshed on 18 October 2026 after correcting priority-selection scrolling. The original fresh-install Windows source copy uses Node 24.16.0 and npm 11.13.0; hosted checks use Ubuntu and Node 24.
+Application verification was refreshed on 19 October 2026 after moving the optional questions before the suggested first step. The original fresh-install Windows source copy uses Node 24.16.0 and npm 11.13.0; hosted checks use Ubuntu and Node 24.
 
 | Check | Result |
 | --- | --- |

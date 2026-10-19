@@ -66,6 +66,7 @@ export function ActionPlan({ result, mode, onNewDocument }: { result: AnalysisRe
         {mode === "sample" && <p className="microcopy">A fixed example notice. Your answers adjust the order and guidance.</p>}
         <p className="microcopy">Source-linked means a passage supports the plan, not that the interpretation is verified. This is an informational aid, not legal, financial, or eligibility advice.</p>
       </section>
+      <ClarificationQuestions questions={result.questions} answers={answers} onAnswer={(questionId, option) => setAnswers(current => ({ ...current, [questionId]: option }))} />
       <section className="start-panel" aria-live="polite">
         <p className="eyebrow">{nextAction ? "Start here" : "Plan complete"}</p><h2>{nextAction?.title ?? "All actions complete"}</h2>
         <p>{nextAction?.reason ?? "You marked every action complete. Confirm the requirements with the issuing office before submitting anything."}</p>
@@ -87,7 +88,6 @@ export function ActionPlan({ result, mode, onNewDocument }: { result: AnalysisRe
           <span>{finding.label}</span><strong>{finding.value}</strong><span className={finding.status === "needs_confirmation" ? "badge confirmation" : "badge"}>{finding.status === "needs_confirmation" ? "Needs confirmation" : "Source-linked"}</span><SourceLinks references={finding.evidence} onShow={showEvidence} />
         </div>)}</aside>
       </section>
-      <ClarificationQuestions questions={result.questions} answers={answers} onAnswer={(questionId, option) => setAnswers(current => ({ ...current, [questionId]: option }))} />
       {result.drafts.map(draft => <DraftPanel key={draft.id} draft={draft} onShow={showEvidence} />)}
       {result.warnings.map((warning, index) => <p className="warning" key={index}>{warning}</p>)}
       <p className="microcopy boundary">Confirm important details against the original document and with the issuing office. Completing an action here only updates this temporary plan.</p>
