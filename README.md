@@ -34,7 +34,7 @@ AI_BASE_URL=https://api.openai.com/v1
 AI_MODEL=your-supported-model
 ```
 
-Restart the server. The sample still works without these values. Live analysis sends extracted passages and a result contract to the configured service's `/chat/completions` endpoint. The configured model must return JSON matching that contract. Costs, quotas, retention, and model capabilities depend on that service. A real-provider evaluation has not been performed without credentials; tests cover the adapter using controlled responses.
+Restart the server. The sample still works without these values. Live analysis sends extracted passages and a result contract to the configured service's `/chat/completions` endpoint. The configured model must return JSON matching that contract. Costs, quotas, retention, and model capabilities depend on that service. Controlled-response tests cover the adapter, and limited Gemini live-text smoke checks passed with fictional notices; see [verification and its limits](docs/verification.md).
 
 Accepted live inputs: plain text or pasted text, text-bearing PDF, PNG, JPEG, and WebP. Limits: 8 MiB upload, 100,000 extracted characters, 40 PDF pages, 16 million image pixels, 30 seconds for extraction, and 30 seconds for analysis. Encrypted/corrupt PDFs and any PDF page without readable text are rejected, including otherwise legitimate blank pages. This conservative boundary avoids silently skipping a scanned requirement. Images use local English OCR with bundled language data and carry transcription warnings; other languages and scanned multipage PDF OCR are outside this proof of concept.
 

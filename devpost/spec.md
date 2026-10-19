@@ -55,7 +55,7 @@ docs/                # verification, third-party notices, screenshot
 ```
 
 ## External Services and Dependencies
-Sample mode makes no provider request. Optional live mode sends extracted segments to an OpenAI-compatible `/chat/completions` endpoint with a structured contract, not the raw file or filename. Configure `AI_API_KEY`, `AI_BASE_URL`, and `AI_MODEL` on the server only. Provider availability, retention, pricing, quotas, and model quality depend on the user's selected service and are not verified without credentials. No external analytics, font, or database is needed. The server requires process-spawning support; full-install Node `next start` is verified, while standalone/serverless deployment is not.
+Sample mode makes no provider request. Optional live mode sends extracted segments to an OpenAI-compatible `/chat/completions` endpoint with a structured contract, not the raw file or filename. Configure `AI_API_KEY`, `AI_BASE_URL`, and `AI_MODEL` on the server only. Limited Gemini live-text smoke checks passed with fictional notices; broader provider availability, retention, pricing, quotas and model quality have not been evaluated. No external analytics, font, or database is needed. The server requires process-spawning support; full-install Node `next start` is verified, while standalone/serverless deployment is not.
 
 ## Important Failure Modes
 - Unreadable/unsupported document → clear message, replace input or use the sample.

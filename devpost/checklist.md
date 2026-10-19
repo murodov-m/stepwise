@@ -23,11 +23,12 @@ Build mode: fast. Technical milestones are complete; learner checkpoints remain 
 ## Hands-on Checkpoints
 
 - [x] Learner explored the running sample and reported a priority-selection scroll jump on 18 October 2026.
+- [x] Learner tested live analysis with a fictional notice and reported it works on 19 October 2026.
 - [ ] Final hands-on exploration and feedback completed, including retrying the scroll correction.
 
 ## Final Review
 
-- [x] Independent technical review approved; 72 unit tests, 12 browser tests, lint, typecheck and production build passed on 27 September 2026.
+- [x] Independent technical review approved; latest checks passed on 19 October 2026: 82 unit tests, 15 browser tests, lint, typecheck and production build. Limited Gemini live-text smoke checks also passed.
 - [ ] Learner confirms readiness to ship.
 - [ ] Priority choices stay in view after tasks reorder; learner retry pending.
 
@@ -47,5 +48,6 @@ Reference route: `StepWiseApp.submit` → `POST/processSample/validateAnalysisRe
 - The first recorded learner feedback arrived after implementation, during the final sample walkthrough. Final review includes correcting the priority-selection scroll jump; an earlier hands-on checkpoint is not claimed.
 - On 19 October 2026, learner feedback clarified the results flow: optional "Before you start" questions appear between the notice summary and the suggested first step. The default plan remains available without answers.
 - The fictional sample deadline is set 14 calendar days after the local start date and remains fixed within the session. Generated source quotes and plan dates agree; live document dates are unchanged.
+- Optional live analysis was connected privately to Gemini and checked with fictional library notices. The live browser flow preserved the stated deadline, opened a matching source quote, cleared input on reset, and retained sample functionality. This is a limited smoke check, not a broad model-quality evaluation.
 
 Generated with the official Devpost Learn Skill Pack `5-build` checklist structure.

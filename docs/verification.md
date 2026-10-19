@@ -17,9 +17,11 @@ The [workflow](../.github/workflows/ci.yml) runs fresh installation, lint, typec
 
 Actual text, text-bearing PDF and English-image extraction were checked using synthetic fixtures. Controlled provider responses test the request contract, source validation, cancellation, timeouts and resource cleanup. Generic questions require an effect for every offered answer; browser tests isolate live-provider settings.
 
+On 19 October 2026, limited live-text checks with Gemini 3.5 Flash-Lite returned validated plans for fictional library notices. API and Chromium website checks preserved the notice's November 30, 2026 deadline. The website displayed a matching source quote, reset cleared the input, and sample mode still worked with live settings configured. The learner also tried a fictional notice and reported it works. Credentials remain private and are not required to run the sample.
+
 ## Limits of this evidence
 
-- Real-model accuracy, availability, costs and retention have not been evaluated with credentials.
+- Live-model evidence is limited to these fictional text smoke checks. Broader accuracy, reliability, costs, retention and live-model PDF/image behavior have not been evaluated.
 - Quote matching establishes source provenance, not interpretation, completeness, professional correctness or eligibility.
 - Local full-install Node operation is supported. Hosted application operation, standalone/serverless deployment and hosts that prohibit child processes are not verified.
 - Browser automation covers Chromium; manual inspection does not establish a complete physical-device or cross-browser matrix.
