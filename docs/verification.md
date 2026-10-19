@@ -1,15 +1,15 @@
 # Verification
 
-Application verification was refreshed on 19 October 2026 after moving the optional questions before the suggested first step. The original fresh-install Windows source copy uses Node 24.16.0 and npm 11.13.0; hosted checks use Ubuntu and Node 24.
+Application verification was refreshed on 19 October 2026 after adding the sample's rolling deadline and moving optional questions before the suggested first step. The original fresh-install Windows source copy uses Node 24.16.0 and npm 11.13.0; hosted checks use Ubuntu and Node 24.
 
 | Check | Result |
 | --- | --- |
 | Fresh `npm ci` | Passed without copied dependencies or build output |
 | Lint | Passed |
 | Typecheck | Passed, including generated Next route validation |
-| Unit/server/domain tests | 72 tests in 14 files passed |
+| Unit/server/domain tests | 82 tests in 14 files passed, including calendar boundaries, date consistency and unchanged live-document dates |
 | Production build | Passed with Next 16.3.6 |
-| Chromium browser tests | 14 passed, including stable priority controls at desktop and mobile widths; owned test server shut down |
+| Chromium browser tests | 15 passed, including local sample dates across time zones, session stability and stable priority controls at desktop and mobile widths; owned test server shut down |
 | Manual production inspection | Sample, priority/readiness answers, sources, completion, reset, keyboard focus and 375px layout inspected |
 | Independent technical review | Approved after corrective regressions and focused re-review |
 

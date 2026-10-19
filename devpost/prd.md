@@ -26,7 +26,7 @@ Compact, high contrast, neutral background, green accent, readable sans-serif ty
 
 ## Features and Behavior
 ### Sample and live input
-Sample mode is explicitly deterministic and requires no external service. Live mode supports plain text/pasted text, text-bearing PDF, PNG, JPEG, and WebP. Maximum upload: 8 MiB. Unsupported, oversized, unreadable, encrypted, or image-only PDFs produce a recovery message. A rejected file can be replaced.
+Sample mode is explicitly fictional, deterministic for its start date, and requires no external service. Its deadline is 14 calendar days after the browser's local start date; the notice, summary, task and source quotes agree, and the date stays fixed for that session. Live mode preserves document dates and supports plain text/pasted text, text-bearing PDF, PNG, JPEG, and WebP. Maximum upload: 8 MiB. Unsupported, oversized, unreadable, encrypted, or image-only PDFs produce a recovery message. A rejected file can be replaced.
 
 ### A plan that changes with the user's progress
 The next-action panel derives from the ordered incomplete actions. Completing it exposes the next one; completing everything shows a completed state. Priority choices preserve the selected option and can move different actions first. Readiness and address answers produce distinct guidance. Incoming completed state is respected. Source: `scope.md > The Unique Kernel`.

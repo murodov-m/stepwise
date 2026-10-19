@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { analysisResultSchema, type AnalysisResult } from "@/lib/domain/schema";
+import { getLocalCalendarDate } from "@/lib/domain/deadlines";
 import { ActionPlan } from "@/components/action-plan";
 import { ErrorState } from "@/components/error-state";
 import { ProcessingView } from "@/components/processing-view";
 
 type AppState = "idle" | "processing" | "success" | "error";
 type RequestMode = "sample" | "live";
-type AnalysisRequest = { mode: RequestMode; file?: File };
+type AnalysisRequest = { mode: RequestMode; file?: File; sampleDate?: string };
 type RequestError = { code: string; message: string };
 
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
@@ -76,6 +77,7 @@ export function StepWiseApp() {
     stopRequest();
     const validationError = request.mode === "live" ? validateLiveFile(request.file) : null;
     if (validationError) return rejectInput(validationError);
+    if (request.mode === "sample" && !request.sampleDate) request = { ...request, sampleDate: getLocalCalendarDate() };
     const requestGeneration = generation.current;
     const controller = new AbortController();
     const timer = window.setTimeout(() => {
@@ -92,6 +94,7 @@ export function StepWiseApp() {
     setState("processing");
     const form = new FormData();
     form.set("mode", request.mode);
+    if (request.mode === "sample" && request.sampleDate) form.set("sampleDate", request.sampleDate);
     if (request.file) form.set("file", request.file);
     try {
       const response = await fetch("/api/analyze", { method: "POST", body: form, signal: controller.signal });
@@ -139,7 +142,7 @@ export function StepWiseApp() {
         <h1>Know what to do next.</h1>
         <p className="lede">Turn a confusing notice into a short, evidence-linked plan.</p>
         <button className="button primary" onClick={() => void submit({ mode: "sample" })}>Try the sample</button>
-        <p className="microcopy">A fixed example notice. No account or live analysis service needed.</p>
+        <p className="microcopy">A fictional notice with a deadline two weeks from today. No account or live analysis service needed.</p>
       </section>
       <section className="input-panel" aria-labelledby="live-title">
         <p className="eyebrow">Optional live analysis</p><h2 id="live-title">Use your own document</h2>

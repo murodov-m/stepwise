@@ -22,10 +22,36 @@ async function sentDocuments(page: Page) {
 }
 
 async function openSample(page: Page) {
+  await page.clock.setFixedTime(new Date(2026, 9, 4, 12));
   await page.goto("/");
   await page.getByRole("button", { name: "Try the sample" }).click();
   await expect(page.locator(".action-card")).toHaveCount(3);
 }
+
+test.describe("rolling sample deadline", () => {
+  test.use({ timezoneId: "Pacific/Auckland" });
+
+  test("uses the viewer's calendar date and keeps it until a new sample starts", async ({ page }) => {
+    // Already January 1 in Auckland, while the UTC server is still in December.
+    await page.clock.setFixedTime(new Date("2026-12-31T11:30:00Z"));
+    await page.goto("/");
+    await page.getByRole("button", { name: "Try the sample", exact: true }).click();
+    await expect(page.locator(".facts-panel")).toContainText("January 15, 2027");
+    await expect(page.locator(".result-header")).toContainText("January 15, 2027");
+    const submission = page.locator(".action-card").filter({ has: page.getByRole("heading", { name: "Review the renewal before submitting", exact: true }) });
+    await expect(submission).toContainText("in 14 days");
+    await submission.getByRole("button", { name: "Show source 1", exact: true }).click();
+    await expect(page.getByRole("dialog").locator("blockquote")).toHaveText("Your annual review must be completed by January 15, 2027.");
+    await page.keyboard.press("Escape");
+    await page.clock.setFixedTime(new Date("2027-01-02T11:30:00Z"));
+    await page.getByRole("button", { name: "Meeting the deadline", exact: true }).click();
+    await expect(page.locator(".start-panel")).toContainText("January 15, 2027");
+    await expect(page.locator(".facts-panel")).toContainText("January 15, 2027");
+    await page.getByRole("button", { name: "Reset session", exact: true }).click();
+    await page.getByRole("button", { name: "Try the sample", exact: true }).click();
+    await expect(page.locator(".facts-panel")).toContainText("January 17, 2027");
+  });
+});
 
 test("meeting-deadline priority chooses the submitting action", async ({ page }) => {
   await openSample(page);

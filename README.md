@@ -15,7 +15,7 @@ npm ci
 npm run dev
 ```
 
-Open [localhost:3000](http://localhost:3000) and choose **Try the sample**. Inspect a source, change a priority answer, complete a task, and start a new document. Sample output is a deterministic fixture, explicitly labeled in the app. It demonstrates the interaction and validation contract; it does not demonstrate a live model's quality.
+Open [localhost:3000](http://localhost:3000) and choose **Try the sample**. Inspect a source, change a priority answer, complete a task, and start a new document. The fictional sample sets its deadline 14 calendar days after the browser's local start date and keeps that date for the session. Its notice, summary, task and source quotes use the same date. Output is deterministic for a given start date and is explicitly labeled in the app. It demonstrates the interaction and validation contract; it does not demonstrate a live model's quality. Uploaded documents retain their actual dates.
 
 To run a production build locally:
 

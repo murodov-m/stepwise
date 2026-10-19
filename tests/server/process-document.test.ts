@@ -13,6 +13,8 @@ describe("live document processing", () => {
   it("validates a provider result before returning it", async () => {
     const result = await processLiveDocument(document, { analyze: async () => sampleResult });
     expect(result.summary).toContain("annual benefits review");
+    expect(result.actions[2].dueDate).toBe("2026-10-18");
+    expect(result.evidence[0].text).toContain("Your annual review must be completed by October 18, 2026.");
   });
 
   it("rejects a provider response with missing evidence", async () => {

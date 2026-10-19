@@ -27,7 +27,11 @@ export async function POST(request: Request) {
   try {
     const form = await boundedForm(request);
     const mode = form.get("mode");
-    if (mode === "sample") return NextResponse.json(processSample("benefits-renewal"));
+    if (mode === "sample") {
+      const sampleDate = form.get("sampleDate");
+      if (sampleDate !== null && typeof sampleDate !== "string") throw new UploadValidationError("The sample date must be a calendar date.");
+      return NextResponse.json(processSample("benefits-renewal", sampleDate ?? undefined));
+    }
     if (mode !== "live") return NextResponse.json({code: "MODE_INVALID", message: "Choose the sample or live document mode."}, {status: 400});
     const file = form.get("file");
     if (!(file instanceof File)) throw new UploadValidationError("Choose a document to analyze.");

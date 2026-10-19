@@ -63,7 +63,7 @@ export function ActionPlan({ result, mode, onNewDocument }: { result: AnalysisRe
       <section className="result-header">
         <p className="eyebrow">{mode === "sample" ? "Sample plan" : "Your action plan"}</p>
         <h1 aria-live="polite">{remaining.length} {remaining.length === 1 ? "action" : "actions"} left.</h1><p className="lede">{result.summary}</p>
-        {mode === "sample" && <p className="microcopy">A fixed example notice. Your answers adjust the order and guidance.</p>}
+        {mode === "sample" && <p className="microcopy">A fictional example. Its deadline is set 14 days after you start the sample. Your answers adjust the order and guidance.</p>}
         <p className="microcopy">Source-linked means a passage supports the plan, not that the interpretation is verified. This is an informational aid, not legal, financial, or eligibility advice.</p>
       </section>
       <ClarificationQuestions questions={result.questions} answers={answers} onAnswer={(questionId, option) => setAnswers(current => ({ ...current, [questionId]: option }))} />

@@ -5,7 +5,7 @@ status: approved
 # StepWise — Technical Spec
 
 ## How This Works, In Plain Language
-The browser holds the current checklist. A local server reads a supplied document before asking an optional AI service to organize it. It checks the AI's references against the text it read itself. The bundled sample bypasses external services and uses a fixed fictional notice. There is no account or database.
+The browser holds the current checklist. A local server reads a supplied document before asking an optional AI service to organize it. It checks the AI's references against the text it read itself. The bundled sample bypasses external services and generates a fictional notice with a deadline 14 calendar days after its start date. There is no account or database.
 
 ## The Core Journey Through the System
 Input → server request → independently extracted source passages → optional analyzer → result/evidence validation → browser plan → local answers and completion state. The sample follows the same result contract using bundled passages and deterministic output. Opening a source displays server-owned text in a modal. Clearing the session drops the browser's current state. PRD ref: `prd.md > The Core Journey`.
@@ -28,7 +28,7 @@ Carry forward PRD's Action First direction using ordinary CSS: neutral `#f5f6f3`
 
 ## Components
 ### Input and session controller
-The client accepts a file or pasted text, calls the document endpoint, handles cancellation/errors, and owns session-wide clearing. PRD ref: `prd.md > Sample and live input`, `prd.md > States and Boundaries`.
+The client accepts a file or pasted text, calls the document endpoint, handles cancellation/errors, and owns session-wide clearing. Sample requests include the browser's local calendar date as `sampleDate`; retries preserve that start date. The server validates it and generates one consistent fictional deadline using calendar arithmetic. Requests without this optional field use the server's local date. The resulting date stays in the browser's plan until reset. Live input does not use this date. PRD ref: `prd.md > Sample and live input`, `prd.md > States and Boundaries`.
 
 ### Server processing boundary
 The document route checks body size, file type/signature, configured mode, and cancellation. Extraction has a 30-second budget; provider analysis has a separate 30-second budget. Maximum extracted text: 100,000 characters; maximum PDF pages: 40; maximum image size: 16 million pixels. Both PDF and OCR run in owned child processes so initialization and CPU-heavy work can be terminated, with process exit awaited. PDF/OCR resources close on success, failure, and timeout. PRD ref: `prd.md > Evidence and uncertainty`.
@@ -48,7 +48,7 @@ app/                 # route, page, layout, styling, API
 components/          # input, progress, plan, questions, evidence
 lib/domain/          # schema, fixture, dates, personalization
 lib/server/          # extraction, provider, validation, processing
-public/sample/       # fictional notice
+public/sample/       # archived reference notice; interactive dates are generated
 tests/               # unit, integration, browser checks
 devpost/             # required planning, build checklist, code map
 docs/                # verification, third-party notices, screenshot
@@ -63,7 +63,7 @@ Sample mode makes no provider request. Optional live mode sends extracted segmen
 - OCR transcription errors → visible OCR warning and confirmation state; compare against the original image.
 
 ## What Was Simplified and Why
-- Fixed fictional sample gives a repeatable no-key demo; live quality needs separate provider evaluation.
+- The fictional sample is repeatable for a given start date and needs no key. Its rolling deadline keeps the demo current; live quality needs separate provider evaluation.
 - Temporary state avoids storing sensitive documents; history would need a separate privacy/storage design.
 - Plain text, text-bearing PDFs, and direct images prove extraction; multipage scanned PDF OCR and other languages are deferred.
 - Reject a PDF if any page has no readable text, even a legitimate blank page, to avoid silently omitting a scanned requirement.

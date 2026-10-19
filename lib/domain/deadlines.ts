@@ -1,8 +1,10 @@
 import { isCalendarDate, type Action } from "@/lib/domain/schema";
+export function getLocalCalendarDate(date = new Date()): string {
+  return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`;
+}
 export function getActionDueLabel(action: Action, today?: string): string {
   if (!action.dueDate || action.dueKind === "none") return action.dueKind === "suggested" && !action.dueLabel.startsWith("Suggested:") ? `Suggested: ${action.dueLabel}` : action.dueLabel;
-  const now = new Date();
-  const localToday = today ?? `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+  const localToday = today ?? getLocalCalendarDate();
   if (!isCalendarDate(action.dueDate) || !isCalendarDate(localToday)) throw new Error("Invalid calendar date");
   const calendar = (date: string) => {
     const value = new Date(0);

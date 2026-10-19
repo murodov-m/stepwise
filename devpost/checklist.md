@@ -46,5 +46,6 @@ Reference route: `StepWiseApp.submit` → `POST/processSample/validateAnalysisRe
 - Type checking generates Next route definitions first. The lockfile preserves exact dependency versions for fresh installation.
 - The first recorded learner feedback arrived after implementation, during the final sample walkthrough. Final review includes correcting the priority-selection scroll jump; an earlier hands-on checkpoint is not claimed.
 - On 19 October 2026, learner feedback clarified the results flow: optional "Before you start" questions appear between the notice summary and the suggested first step. The default plan remains available without answers.
+- The fictional sample deadline is set 14 calendar days after the local start date and remains fixed within the session. Generated source quotes and plan dates agree; live document dates are unchanged.
 
 Generated with the official Devpost Learn Skill Pack `5-build` checklist structure.
